@@ -7,8 +7,7 @@ UITableView无数据时的提示
     self.tableView.defaultNoDataViewClickActionBlock = ^(UIView *view) {
         _data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
         [weakSelf.tableView reloadData];
-    };
-    ```
+    }; ```
 
 又或者自定义提示
 ```tableView.customNoDataView = [self customNoticeView];```
