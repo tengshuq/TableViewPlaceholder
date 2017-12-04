@@ -24,7 +24,7 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
     
     __weak typeof(self)weakSelf = self;
-    self.tableView.defaultNoDataViewClickActionBlock = ^(UIView *view) {
+    self.tableView.defaultNoDataViewClickedBlock = ^(UIView *view) {
         _data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
         [weakSelf.tableView reloadData];
     };

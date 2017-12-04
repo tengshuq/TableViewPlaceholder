@@ -123,7 +123,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 }
 
 - (void)tt_tapDefalutNoDataView:(UITapGestureRecognizer *)tap {
-    self.defaultNoDataViewClickActionBlock ? self.defaultNoDataViewClickActionBlock(tap.view) : nil;
+    self.defaultNoDataViewClickedBlock ? self.defaultNoDataViewClickedBlock(tap.view) : nil;
 }
 
 #pragma mark - setter && getter
@@ -139,11 +139,11 @@ void swizzMethod(SEL oriSel, SEL newSel) {
         return YES;
 }
 
-- (void)setDefaultNoDataViewClickActionBlock:(void (^)(UIView *))defaultNoDataViewClickActionBlock {
-    objc_setAssociatedObject(self, @selector(defaultNoDataViewClickActionBlock), defaultNoDataViewClickActionBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setDefaultNoDataViewClickedBlock:(void (^)(UIView *))defaultNoDataViewClickedBlock {
+    objc_setAssociatedObject(self, @selector(defaultNoDataViewClickedBlock), defaultNoDataViewClickedBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void (^)(UIView *))defaultNoDataViewClickActionBlock {
+- (void (^)(UIView *))defaultNoDataViewClickedBlock {
     return objc_getAssociatedObject(self, _cmd);
 }
 

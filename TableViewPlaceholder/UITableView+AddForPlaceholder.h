@@ -13,7 +13,7 @@
 /// 是否显示无数据时的提示，默认为YES
 @property (nonatomic, assign) BOOL showNoDataNotice;
 /// 默认的无数据提示 View 的点击回调
-@property (nonatomic, copy) void(^defaultNoDataViewClickActionBlock)(UIView *view);
+@property (nonatomic, copy) void(^defaultNoDataViewClickedBlock)(UIView *view);
 /// 自定义无数据提示View
 @property (nonatomic, strong) UIView *customNoDataView;
 

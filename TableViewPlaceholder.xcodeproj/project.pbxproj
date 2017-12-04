@@ -16,8 +16,8 @@
 		A498CCB11FD4F15600BA23BB /* TableViewPlaceholderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CCB01FD4F15600BA23BB /* TableViewPlaceholderTests.m */; };
 		A498CCBC1FD4F15600BA23BB /* TableViewPlaceholderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CCBB1FD4F15600BA23BB /* TableViewPlaceholderUITests.m */; };
 		A498CCCB1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CCCA1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m */; };
-		A498CCE21FD5120F00BA23BB /* TableViewNoData@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A498CCE01FD5120F00BA23BB /* TableViewNoData@2x.png */; };
-		A498CCE31FD5120F00BA23BB /* TableViewNoData@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A498CCE11FD5120F00BA23BB /* TableViewNoData@3x.png */; };
+		A498CD811FD52A0500BA23BB /* TableViewNoData@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A498CD7F1FD52A0500BA23BB /* TableViewNoData@2x.png */; };
+		A498CD821FD52A0500BA23BB /* TableViewNoData@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A498CD801FD52A0500BA23BB /* TableViewNoData@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +56,8 @@
 		A498CCBD1FD4F15600BA23BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A498CCC91FD4F18700BA23BB /* UITableView+AddForPlaceholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+AddForPlaceholder.h"; sourceTree = "<group>"; };
 		A498CCCA1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+AddForPlaceholder.m"; sourceTree = "<group>"; };
-		A498CCE01FD5120F00BA23BB /* TableViewNoData@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TableViewNoData@2x.png"; path = "../../../Downloads/TableViewNoData@2x.png"; sourceTree = "<group>"; };
-		A498CCE11FD5120F00BA23BB /* TableViewNoData@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TableViewNoData@3x.png"; path = "../../../Downloads/TableViewNoData@3x.png"; sourceTree = "<group>"; };
+		A498CD7F1FD52A0500BA23BB /* TableViewNoData@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TableViewNoData@2x.png"; path = "../../../Downloads/TableViewNoData@2x.png"; sourceTree = "<group>"; };
+		A498CD801FD52A0500BA23BB /* TableViewNoData@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TableViewNoData@3x.png"; path = "../../../Downloads/TableViewNoData@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +114,8 @@
 				A498CC9B1FD4F15500BA23BB /* ViewController.m */,
 				A498CCC91FD4F18700BA23BB /* UITableView+AddForPlaceholder.h */,
 				A498CCCA1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m */,
-				A498CCE01FD5120F00BA23BB /* TableViewNoData@2x.png */,
-				A498CCE11FD5120F00BA23BB /* TableViewNoData@3x.png */,
+				A498CD7F1FD52A0500BA23BB /* TableViewNoData@2x.png */,
+				A498CD801FD52A0500BA23BB /* TableViewNoData@3x.png */,
 				A498CC9D1FD4F15500BA23BB /* Main.storyboard */,
 				A498CCA01FD4F15500BA23BB /* Assets.xcassets */,
 				A498CCA21FD4F15500BA23BB /* LaunchScreen.storyboard */,
@@ -250,8 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A498CCA41FD4F15500BA23BB /* LaunchScreen.storyboard in Resources */,
-				A498CCE31FD5120F00BA23BB /* TableViewNoData@3x.png in Resources */,
-				A498CCE21FD5120F00BA23BB /* TableViewNoData@2x.png in Resources */,
+				A498CD821FD52A0500BA23BB /* TableViewNoData@3x.png in Resources */,
+				A498CD811FD52A0500BA23BB /* TableViewNoData@2x.png in Resources */,
 				A498CCA11FD4F15500BA23BB /* Assets.xcassets in Resources */,
 				A498CC9F1FD4F15500BA23BB /* Main.storyboard in Resources */,
 			);
