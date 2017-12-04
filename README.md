@@ -1,6 +1,6 @@
 # TableViewPlaceholder
 UITableView无数据时的提示
-![效果图](https://github.com/tengshuq/TableViewPlaceholder/row/master/demoPicture.gif)
+![效果图](https://github.com/tengshuq/TableViewPlaceholder/raw/master/demoPicture.gif)
 
 简单易用，一行代码回调默认点击事件
 ```__weak typeof(self)weakSelf = self;
