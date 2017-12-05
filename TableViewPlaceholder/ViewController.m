@@ -18,16 +18,37 @@
 
 @implementation ViewController
 
+- (void)dealloc {
+    NSLog(@"......");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
     
     __weak typeof(self)weakSelf = self;
-    self.tableView.defaultNoDataViewClickedBlock = ^(UIView *view) {
-        _data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
+
+    self.tableView.defaultNoDataViewDidClickBlock = ^(UIView *view) {
+        
+        weakSelf.data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
         [weakSelf.tableView reloadData];
     };
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+}
+
+- (void)onDeviceOrientationChange:(NSNotification *)noti {
+    
+    CGFloat width , height;
+    width = [UIScreen mainScreen].bounds.size.width;
+    height = [UIScreen mainScreen].bounds.size.height;
+    self.tableView.frame = CGRectMake(0, 0, width, height);
 }
 
 #pragma mark - tableView Delegate

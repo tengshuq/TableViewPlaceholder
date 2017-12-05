@@ -9,9 +9,11 @@
 #import "UITableView+AddForPlaceholder.h"
 #import <objc/runtime.h>
 
-static BOOL UITableViewPlaceholderHasSetShowNoDataNotice;
-
 @implementation UITableView (AddForPlaceholder)
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 void swizzMethod(SEL oriSel, SEL newSel) {
     
@@ -99,51 +101,76 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 }
 
 - (UIView *)tt_defaultNoDataView {
-    static UIView *view;
+    
+    UIView *view = self.defaultNoDataView;
     if (!view) {
         view = [[UIView alloc] initWithFrame:self.bounds];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tt_tapDefalutNoDataView:)];
         [view addGestureRecognizer:tap];
         
-        UIImage *image = [UIImage imageNamed:@"TableViewNoData"];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        CGFloat X = (self.bounds.size.width - image.size.width) / 2;
-        CGFloat Y = (self.bounds.size.height - image.size.height) / 2 - 20;
-        imageView.frame = CGRectMake(X, Y, image.size.width, image.size.height);
-        
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.tag = 1001;
         [view addSubview:imageView];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, imageView.frame.origin.y + imageView.bounds.size.height + 10, self.bounds.size.width, 30)];
+        UILabel *label = [[UILabel alloc] init];
+        label.tag = 1002;
         label.text = @"点击刷新";
         label.font = [UIFont systemFontOfSize:11];
         label.textAlignment = NSTextAlignmentCenter;
         [view addSubview:label];
+        
+        [self layoutDefaultView:view];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        
+        self.defaultNoDataView = view;
     }
+    
     return view;
 }
 
-- (void)tt_tapDefalutNoDataView:(UITapGestureRecognizer *)tap {
-    self.defaultNoDataViewClickedBlock ? self.defaultNoDataViewClickedBlock(tap.view) : nil;
+- (void)layoutDefaultView:(UIView *)defaultView {
+    
+    UIImageView *imageView = [defaultView viewWithTag:1001];
+    
+    UIImage *image = [UIImage imageNamed:@"TableViewNoData"];
+    imageView.image = image;
+    CGFloat X = (self.bounds.size.width - image.size.width) / 2;
+    CGFloat Y = (self.bounds.size.height - image.size.height) / 2 - 20;
+    imageView.frame = CGRectMake(X, Y, image.size.width, image.size.height);
+    
+    UILabel *label = [defaultView viewWithTag:1002];
+    label.frame = CGRectMake(0, imageView.frame.origin.y + imageView.bounds.size.height + 10, self.bounds.size.width, 30);
 }
+
+- (void)tt_tapDefalutNoDataView:(UITapGestureRecognizer *)tap {
+    
+    self.defaultNoDataViewDidClickBlock ? self.defaultNoDataViewDidClickBlock(self.defaultNoDataView) : nil;
+}
+
+#pragma mark - notifications
+- (void)onDeviceOrientationChange:(NSNotification *)noti {
+    if (self.customNoDataView || !self.showNoDataNotice) {
+        return;
+    }
+    [self layoutDefaultView:self.defaultNoDataView];
+}
+
 
 #pragma mark - setter && getter
 - (void)setShowNoDataNotice:(BOOL)showNoDataNotice {
-    UITableViewPlaceholderHasSetShowNoDataNotice = YES;
     objc_setAssociatedObject(self, @selector(showNoDataNotice), @(showNoDataNotice), OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (BOOL)showNoDataNotice {
-    if (UITableViewPlaceholderHasSetShowNoDataNotice) {
-        return [objc_getAssociatedObject(self, _cmd) boolValue];
-    } else
-        return YES;
+    return [objc_getAssociatedObject(self, _cmd) boolValue] ? : YES;
 }
 
-- (void)setDefaultNoDataViewClickedBlock:(void (^)(UIView *))defaultNoDataViewClickedBlock {
-    objc_setAssociatedObject(self, @selector(defaultNoDataViewClickedBlock), defaultNoDataViewClickedBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setDefaultNoDataViewDidClickBlock:(void (^)(UIView *))defaultNoDataViewDidClickBlock {
+    objc_setAssociatedObject(self, @selector(defaultNoDataViewDidClickBlock), defaultNoDataViewDidClickBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void (^)(UIView *))defaultNoDataViewClickedBlock {
+- (void (^)(UIView *))defaultNoDataViewDidClickBlock {
     return objc_getAssociatedObject(self, _cmd);
 }
 
@@ -153,6 +180,14 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 
 - (UIView *)customNoDataView {
     return objc_getAssociatedObject(self, _cmd);
+}
+
+- (UIView *)defaultNoDataView {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setDefaultNoDataView:(UIView *)defaultNoDataView {
+    objc_setAssociatedObject(self, @selector(defaultNoDataView), defaultNoDataView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
