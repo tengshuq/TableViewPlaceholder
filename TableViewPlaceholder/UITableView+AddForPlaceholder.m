@@ -102,9 +102,11 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 
 - (UIView *)tt_defaultNoDataView {
     
-    UIView *view = self.defaultNoDataView;
-    if (!view) {
-        view = [[UIView alloc] initWithFrame:self.bounds];
+    if (self.defaultNoDataView) {
+        return self.defaultNoDataView;
+    }
+    self.defaultNoDataView = ({
+        UIView *view = [[UIView alloc] initWithFrame:self.bounds];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tt_tapDefalutNoDataView:)];
         [view addGestureRecognizer:tap];
         
@@ -123,10 +125,10 @@ void swizzMethod(SEL oriSel, SEL newSel) {
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
         
-        self.defaultNoDataView = view;
-    }
+        view;
+    });
     
-    return view;
+    return self.defaultNoDataView;
 }
 
 - (void)layoutDefaultView:(UIView *)defaultView {
