@@ -11,6 +11,7 @@
 
 @implementation UITableView (AddForPlaceholder)
 
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -95,7 +96,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
             } else
                 self.backgroundView = [self tt_defaultNoDataView];
         } else {
-            self.backgroundView = [UIView new];
+            self.backgroundView = [[UIView alloc] init];
         }
     }
 }
@@ -165,7 +166,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 }
 
 - (BOOL)showNoDataNotice {
-    return [objc_getAssociatedObject(self, _cmd) boolValue] ? : YES;
+    return objc_getAssociatedObject(self, _cmd) == nil ? YES : [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 - (void)setDefaultNoDataViewDidClickBlock:(void (^)(UIView *))defaultNoDataViewDidClickBlock {

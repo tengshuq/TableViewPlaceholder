@@ -9,6 +9,11 @@
 #import "ViewController.h"
 #import "UITableView+AddForPlaceholder.h"
 
+//弱引用
+#define kWeak(self) @autoreleasepool{} __weak typeof(self) self##Weak = self;
+//强引用
+#define kStrong(self) @autoreleasepool{} __strong typeof(self##Weak) self = self##Weak;
+
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -27,14 +32,13 @@
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
     
-    __weak typeof(self)weakSelf = self;
-
-    self.tableView.defaultNoDataViewDidClickBlock = ^(UIView *view) {
-        
-        weakSelf.data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
-        [weakSelf.tableView reloadData];
-    };
-    
+//    kWeak(self);
+//    self.tableView.defaultNoDataViewDidClickBlock = ^(UIView *view) {
+//        kStrong(self);
+//        self.data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
+//        [self.tableView reloadData];
+//    };
+    self.tableView.backgroundView = [UIView new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
@@ -91,11 +95,11 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    return [UIView new];
+    return [[UIView alloc] init];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [UIView new];
+    return [[UIView alloc] init];
 }
 
 - (UIButton *)customNoticeView {
