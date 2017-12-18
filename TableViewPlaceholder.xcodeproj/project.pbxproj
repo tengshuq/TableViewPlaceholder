@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A40DCB611FE7F5E900A49743 /* UITableView+AddForPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = A40DCB5E1FE7F5E900A49743 /* UITableView+AddForPlaceholder.m */; };
+		A40DCB621FE7F5E900A49743 /* UITableViewPlaceholder.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A40DCB5F1FE7F5E900A49743 /* UITableViewPlaceholder.bundle */; };
 		A498CC991FD4F15500BA23BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CC981FD4F15500BA23BB /* AppDelegate.m */; };
 		A498CC9C1FD4F15500BA23BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CC9B1FD4F15500BA23BB /* ViewController.m */; };
 		A498CC9F1FD4F15500BA23BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A498CC9D1FD4F15500BA23BB /* Main.storyboard */; };
@@ -15,10 +17,6 @@
 		A498CCA71FD4F15500BA23BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CCA61FD4F15500BA23BB /* main.m */; };
 		A498CCB11FD4F15600BA23BB /* TableViewPlaceholderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CCB01FD4F15600BA23BB /* TableViewPlaceholderTests.m */; };
 		A498CCBC1FD4F15600BA23BB /* TableViewPlaceholderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CCBB1FD4F15600BA23BB /* TableViewPlaceholderUITests.m */; };
-		A498CCCB1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = A498CCCA1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m */; };
-		A498CD811FD52A0500BA23BB /* TableViewNoData@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A498CD7F1FD52A0500BA23BB /* TableViewNoData@2x.png */; };
-		A498CD821FD52A0500BA23BB /* TableViewNoData@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A498CD801FD52A0500BA23BB /* TableViewNoData@3x.png */; };
-		A4C1963C1FE50F210028DA05 /* UITableViewPlaceholder.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A4C1963B1FE50F210028DA05 /* UITableViewPlaceholder.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A40DCB5E1FE7F5E900A49743 /* UITableView+AddForPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+AddForPlaceholder.m"; sourceTree = "<group>"; };
+		A40DCB5F1FE7F5E900A49743 /* UITableViewPlaceholder.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UITableViewPlaceholder.bundle; sourceTree = "<group>"; };
+		A40DCB601FE7F5E900A49743 /* UITableView+AddForPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+AddForPlaceholder.h"; sourceTree = "<group>"; };
 		A498CC941FD4F15500BA23BB /* TableViewPlaceholder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewPlaceholder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A498CC971FD4F15500BA23BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A498CC981FD4F15500BA23BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,11 +56,6 @@
 		A498CCB71FD4F15600BA23BB /* TableViewPlaceholderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewPlaceholderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A498CCBB1FD4F15600BA23BB /* TableViewPlaceholderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewPlaceholderUITests.m; sourceTree = "<group>"; };
 		A498CCBD1FD4F15600BA23BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A498CCC91FD4F18700BA23BB /* UITableView+AddForPlaceholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+AddForPlaceholder.h"; sourceTree = "<group>"; };
-		A498CCCA1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+AddForPlaceholder.m"; sourceTree = "<group>"; };
-		A498CD7F1FD52A0500BA23BB /* TableViewNoData@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TableViewNoData@2x.png"; path = "../../../Downloads/TableViewNoData@2x.png"; sourceTree = "<group>"; };
-		A498CD801FD52A0500BA23BB /* TableViewNoData@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TableViewNoData@3x.png"; path = "../../../Downloads/TableViewNoData@3x.png"; sourceTree = "<group>"; };
-		A4C1963B1FE50F210028DA05 /* UITableViewPlaceholder.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = UITableViewPlaceholder.bundle; path = "../../../Library/Developer/Xcode/DerivedData/UITableViewPlaceholder-desegpopgnbagbhivxojannttkzv/Build/Products/Debug-iphoneos/UITableViewPlaceholder.bundle"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A40DCB5D1FE7F5E900A49743 /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				A40DCB601FE7F5E900A49743 /* UITableView+AddForPlaceholder.h */,
+				A40DCB5E1FE7F5E900A49743 /* UITableView+AddForPlaceholder.m */,
+				A40DCB5F1FE7F5E900A49743 /* UITableViewPlaceholder.bundle */,
+			);
+			path = Placeholder;
+			sourceTree = "<group>";
+		};
 		A498CC8B1FD4F15500BA23BB = {
 			isa = PBXGroup;
 			children = (
@@ -110,15 +116,11 @@
 		A498CC961FD4F15500BA23BB /* TableViewPlaceholder */ = {
 			isa = PBXGroup;
 			children = (
+				A40DCB5D1FE7F5E900A49743 /* Placeholder */,
 				A498CC971FD4F15500BA23BB /* AppDelegate.h */,
 				A498CC981FD4F15500BA23BB /* AppDelegate.m */,
 				A498CC9A1FD4F15500BA23BB /* ViewController.h */,
 				A498CC9B1FD4F15500BA23BB /* ViewController.m */,
-				A498CCC91FD4F18700BA23BB /* UITableView+AddForPlaceholder.h */,
-				A498CCCA1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m */,
-				A4C1963B1FE50F210028DA05 /* UITableViewPlaceholder.bundle */,
-				A498CD7F1FD52A0500BA23BB /* TableViewNoData@2x.png */,
-				A498CD801FD52A0500BA23BB /* TableViewNoData@3x.png */,
 				A498CC9D1FD4F15500BA23BB /* Main.storyboard */,
 				A498CCA01FD4F15500BA23BB /* Assets.xcassets */,
 				A498CCA21FD4F15500BA23BB /* LaunchScreen.storyboard */,
@@ -253,11 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A498CCA41FD4F15500BA23BB /* LaunchScreen.storyboard in Resources */,
-				A498CD821FD52A0500BA23BB /* TableViewNoData@3x.png in Resources */,
-				A498CD811FD52A0500BA23BB /* TableViewNoData@2x.png in Resources */,
+				A40DCB621FE7F5E900A49743 /* UITableViewPlaceholder.bundle in Resources */,
 				A498CCA11FD4F15500BA23BB /* Assets.xcassets in Resources */,
 				A498CC9F1FD4F15500BA23BB /* Main.storyboard in Resources */,
-				A4C1963C1FE50F210028DA05 /* UITableViewPlaceholder.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A498CC9C1FD4F15500BA23BB /* ViewController.m in Sources */,
-				A498CCCB1FD4F18700BA23BB /* UITableView+AddForPlaceholder.m in Sources */,
+				A40DCB611FE7F5E900A49743 /* UITableView+AddForPlaceholder.m in Sources */,
 				A498CCA71FD4F15500BA23BB /* main.m in Sources */,
 				A498CC991FD4F15500BA23BB /* AppDelegate.m in Sources */,
 			);
