@@ -32,12 +32,13 @@
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
     
-//    kWeak(self);
-//    self.tableView.defaultNoDataViewDidClickBlock = ^(UIView *view) {
-//        kStrong(self);
-//        self.data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
-//        [self.tableView reloadData];
-//    };
+    kWeak(self);
+    self.tableView.defaultNoDataText = @"这是一行提示的文字呀";
+    self.tableView.defaultNoDataViewDidClickBlock = ^(UIView *view) {
+        kStrong(self);
+        self.data = @[@"删除数据，显示默认提示",@"删除数据，显示自定义提示"];
+        [self.tableView reloadData];
+    };
     self.tableView.backgroundView = [UIView new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }

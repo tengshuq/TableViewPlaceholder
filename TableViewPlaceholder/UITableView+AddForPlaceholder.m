@@ -111,16 +111,8 @@ void swizzMethod(SEL oriSel, SEL newSel) {
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tt_tapDefalutNoDataView:)];
         [view addGestureRecognizer:tap];
         
-        UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.tag = 1001;
-        [view addSubview:imageView];
-        
-        UILabel *label = [[UILabel alloc] init];
-        label.tag = 1002;
-        label.text = @"点击刷新";
-        label.font = [UIFont systemFontOfSize:11];
-        label.textAlignment = NSTextAlignmentCenter;
-        [view addSubview:label];
+        [view addSubview:self.defaultNoDataNoticeImageView];
+        [view addSubview:self.defaultNoDataNoticeLabel];
         
         [self layoutDefaultView:view];
         
@@ -134,15 +126,16 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 
 - (void)layoutDefaultView:(UIView *)defaultView {
     
-    UIImageView *imageView = [defaultView viewWithTag:1001];
-    
-    UIImage *image = [UIImage imageNamed:@"TableViewNoData"];
+    UIImageView *imageView = self.defaultNoDataNoticeImageView;
+    UIImage *image = self.defaultNoDataImage ? : [UIImage imageNamed:@"UITableViewPlaceholder.bundle/TableViewNoData"];
     imageView.image = image;
-    CGFloat X = (self.bounds.size.width - image.size.width) / 2;
-    CGFloat Y = (self.bounds.size.height - image.size.height) / 2 - 20;
+    CGFloat X = (self.bounds.size.width - image.size.width - self.contentInset.left - self.contentInset.right) / 2;
+    CGFloat Y = (self.bounds.size.height - image.size.height - self.contentInset.top - self.contentInset.bottom) / 2 - 20;
     imageView.frame = CGRectMake(X, Y, image.size.width, image.size.height);
     
-    UILabel *label = [defaultView viewWithTag:1002];
+    // 提示语不用太长，不考虑换行的情况，也不计算文字的宽高了
+    UILabel *label = self.defaultNoDataNoticeLabel;
+    label.text = self.defaultNoDataText ? : label.text;
     label.frame = CGRectMake(0, imageView.frame.origin.y + imageView.bounds.size.height + 10, self.bounds.size.width, 30);
 }
 
@@ -170,6 +163,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 }
 
 - (void)setDefaultNoDataViewDidClickBlock:(void (^)(UIView *))defaultNoDataViewDidClickBlock {
+    self.showNoDataNotice = YES;
     objc_setAssociatedObject(self, @selector(defaultNoDataViewDidClickBlock), defaultNoDataViewDidClickBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
@@ -178,6 +172,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 }
 
 - (void)setCustomNoDataView:(UIView *)customNoDataView {
+    self.showNoDataNotice = YES;
     objc_setAssociatedObject(self, @selector(customNoDataView), customNoDataView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -191,6 +186,47 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 
 - (void)setDefaultNoDataView:(UIView *)defaultNoDataView {
     objc_setAssociatedObject(self, @selector(defaultNoDataView), defaultNoDataView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+// 默认的label
+- (UILabel *)defaultNoDataNoticeLabel {
+    UILabel *label = objc_getAssociatedObject(self, _cmd);
+    if (!label) {
+        label = [[UILabel alloc] init];
+        label.text = self.defaultNoDataText ? : @"暂无数据,点击刷新";
+        label.font = [UIFont systemFontOfSize:11];
+        label.textAlignment = NSTextAlignmentCenter;
+        objc_setAssociatedObject(self, _cmd, label, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return label;
+}
+
+// 默认的imageView
+- (UIImageView *)defaultNoDataNoticeImageView {
+    UIImageView *imageView = objc_getAssociatedObject(self, _cmd);
+    if (!imageView) {
+        imageView = [[UIImageView alloc] init];
+        imageView.image = self.defaultNoDataImage ? : [UIImage imageNamed:@"UITableViewPlaceholder.bundle/TableViewNoData"];
+        imageView.contentMode = UIViewContentModeCenter;
+        objc_setAssociatedObject(self, _cmd, imageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return imageView;
+}
+
+- (NSString *)defaultNoDataText {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setDefaultNoDataText:(NSString *)defaultNoticeText {
+    objc_setAssociatedObject(self, @selector(defaultNoDataText), defaultNoticeText, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (UIImage *)defaultNoDataImage {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setDefaultNoDataImage:(UIImage *)defaultNoticeImage {
+    objc_setAssociatedObject(self, @selector(defaultNoDataImage), defaultNoticeImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
