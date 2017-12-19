@@ -49,38 +49,38 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 }
 
 - (void)tt_reloadData {
-    [self showPlaceholderNotice];
     [self tt_reloadData];
+    [self showPlaceholderNotice];
 }
 
 - (void)tt_insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation {
-    [self showPlaceholderNotice];
     [self tt_insertSections:sections withRowAnimation:animation];
+    [self showPlaceholderNotice];
 }
 
 - (void)tt_deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation {
-    [self showPlaceholderNotice];
     [self tt_deleteSections:sections withRowAnimation:animation];
+    [self showPlaceholderNotice];
 }
 
 - (void)tt_reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation {
-    [self showPlaceholderNotice];
     [self tt_reloadSections:sections withRowAnimation:animation];
+    [self showPlaceholderNotice];
 }
 
 - (void)tt_insertRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    [self showPlaceholderNotice];
     [self tt_insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    [self showPlaceholderNotice];
 }
 
 - (void)tt_deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    [self showPlaceholderNotice];
     [self tt_deleteRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    [self showPlaceholderNotice];
 }
 
 - (void)tt_reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    [self showPlaceholderNotice];
     [self tt_reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    [self showPlaceholderNotice];
 }
 
 - (void)showPlaceholderNotice {
